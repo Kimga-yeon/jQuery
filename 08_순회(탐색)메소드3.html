@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+        <title>08. 순회(탐색) 메소드3</title>
+        <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <style>
+            .wrap, .wrap *{
+                border : 1px solid lightgray;
+                display : block;
+                padding : 5px;
+                margin : 15px;
+                color : gray;
+            }
+        </style>    
+    </head>
+    <body>
+        <h1>순회 (탐색) 메소드3</h1>
+        <h3>sideways(옆으로, 옆에서) 메소드 : 같은 레벨에 있는 요소(형제)를 선택할 수 있는 메소드</h3>
+        <pre>
+
+            $("선택자").siblings([매개변수]);
+                - siblings 뜻 : 형제 자매
+                - 선택된 요소와 같은 레벨에 있는 모든 요소를 선택
+                - 매개변수가 있으면 같은 레벨 요소 중 매개변수와 일치하는 요소만을 선택 
+
+            $("선택자").next();
+                - 선택된 요소의 같은 레벨 요소 중 바로 다음 요소 선택 (한개)
+                
+            $("선택자").nextAll();
+                - 선택된 요소의 같은 레벨 요소 중 바로 다음 요소 선택 (모든)
+
+            $("선택자").nextUntil();
+                - 선택된 요소의 같은 레벨이면서 다음에 위치한 요소 중 
+                    매개변수 이전 까지의 모든 요소 선택   
+
+
+
+            $("선택자").prev();
+                - 선택된 요소의 같은 레벨 요소 중 바로 이전 요소 선택 (한개)
+                
+            $("선택자").prevAll();
+                - 선택된 요소의 같은 레벨 요소 중 바로 이전 요소 선택 (모든)
+
+            $("선택자").prevUntil();
+                - 선택된 요소의 같은 레벨이면서 이전에 위치한 요소 중 
+                    매개변수 이전 까지의 모든 요소 선택       
+        </pre>
+
+        <div class="wrap">
+            div (parent)
+            <p>p</p>
+            <span>span</span>
+            <h2>h2</h2>
+            <h3>h3</h3>
+            <p>p</p>
+
+        </div>
+
+        <script>
+                var style1 = {"color" : "red" , "border" : "2px solid red"};
+                var style2 = {"color" : "red" , "border" : "2px solid orange"};
+                var style3 = {"color" : "red" , "border" : "2px solid yellow"};
+                var style4 = {"color" : "red" , "border" : "2px solid green"};
+                var style5 = {"color" : "red" , "border" : "2px solid blue"};
+
+                // siblings()
+                // h2 태그의 형제 요소들의 스타일을 style1으로 변경 
+                $("h2").siblings().css(style1);
+
+                // siblings("p")
+                // h2 태그의 형재 요소 중 p태그의 스타일을 style2로 변경 
+                $("h2").siblings("p").css(style2);
+
+                // next()
+                // span 태그의 바로 다음 형제태그의 스타일을 style3로 변경
+                $("span").next().css(style3);
+
+                // nextAll()
+                // h2 태그 다음에 오는 모든 형제 요소의 배경색을 "skyblue" 변경
+                $("h2").nextAll().css("backgroundColor","aqua");  
+
+                // nextUntil("p")
+                // span 태그부터 다음에 오는 p 태그 이전까지의 형제 요소들의 
+                // 글자 크기를 "3em으로 변경"
+                $("span").nextUntil("p").css("font-size","3em");
+
+                
+                // prev()
+                // h2 태그 이전 형제 요소의 스타일을 style4로 변경 
+                $("h2").prev().css(style4);
+
+                // prevAll()
+                // h2태그 이전 모든 형제 요소의 배경색을 "hotpink"로 변경
+                $("h2").prevAll().css("backgroundColor","hotpink");
+
+                // preUntil("p")
+                // h3 태그부터 이전 형제 요소 중 p태그 이전 까지의 
+                // 테두리를 "5px dashed black"로 변경
+                $("h3").prevUntil("p").css("border", "5px dashed black");
+
+                // is([매개변수])
+                // 요소가 있는지 검사하는 메소드 
+                // 순회(탐색)메소드로 선택된 요소들 중
+                // 매개변수로 지정한 요소가 존재하는 지 검사하여
+                // 있으면 true, 없으면 false반환 
+
+                // h2 태그의 형제 요소 중 p 태그 존재여부 확인
+                console.log("h2태그의 형제 중 p태그 존재 여부 : " 
+                            +   $("h2").siblings().is("p") );            
+
+                // h2 태그의 다음 모든 형제 요소 중 span 태그 존재여부 확인
+                console.log("h2태그의 형제 중 p태그 존재 여부 : " 
+                                            +   $("h2").nextAll().is("span") );            
+
+
+        </script>
+
+        <hr>
+
+        <h3>keyup 이벤트</h3>
+        <p>
+            키가 올라올 때 이벤트 발생 
+        </p>
+        <input type="text" id="test1">
+        <script>
+            $("#test1").keyup(function(){
+                console.log($(this).val() );
+                
+            }) 
+        </script>
+
+    </body>
+</html>

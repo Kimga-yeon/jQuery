@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+        <title>실습</title>
+        <script src="js/jquery-3.5.1.min.js"></script>
+        <style>
+            .box{
+                width: 100px;
+                height: 100px;
+                display: inline-block;
+
+                border : 1px solid black;
+                text-align: center;
+                line-height: 100px;
+                cursor : pointer;
+                transition-duration: 0.5s;
+            }
+        </style>
+    </head>
+    <body>
+      
+        <div  class="box">red</div>
+        <div  class="box">orange</div>
+        <div  class="box">magenta</div>
+        <div  class="box">green</div>
+        <div  class="box">blue</div>
+     
+        <script>
+           
+     
+
+
+             $(".box").click(function(){
+                 // $(this) : 이벤트가 발생한 요소
+                 // .text() : 요소에 작성된 내용(content)를 얻어옴
+                console.log($ (this).text() );    //글자가 얻어와지는지 확인
+
+                // 현재 선택한 요소의 내용을 color 변수에 저장
+               var color = $(this).text();
+
+                // 현재 선택한 요소의 배경색을 얻어와 console에 출력 
+               console.log( $(this).css("backgroundColor") );   //"backgroundColor","red"-> 가져와라
+ 
+               //현재 선택한 요소의 배경색이  "rgba(0,0,0,0)" --> 투명한 색(기본값) 이라면
+                if( $(this).css("backgroundColor") == "rgba(0, 0, 0, 0)"){
+                    // 현재 선택한 요소의 배경색을 color변수값으로 변경 
+               $(this).css("backgroundColor",color);
+                }else{
+                    $(this).css("backgroundColor", "rgba(0, 0, 0, 0)");
+                }
+            });
+          
+
+             $(function(){ // 문서가 로딩이 된 이후 수행
+                var box = $(".box"); // 클래스 box인 요소를 얻어옴.
+                for(var i=0; i<box.length; i++){
+                    // $(box[i]) : box 배열의 i번째 요소를 선택
+                    // box 배열의 i번째 요소의 글자색을
+                    // box 배열의 i번째 요소의 내용(content)으로 변경 
+                    $(box[i]).css("color", $(box[i]).text());
+
+                }
+
+             });
+
+          
+
+
+        </script>
+
+    </body>
+</html>

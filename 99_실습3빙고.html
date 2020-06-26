@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+        <title>빙고판</title>
+        <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+                td{
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+    
+    </head>
+    <body>
+        <h2>빙고판 만들기</h2>
+        행 : <input type="text" id="row">
+        열 : <input type="text" id="col">
+        <button id="btn">생성</button>
+        <br>
+
+        <table id="tbl" ></table>
+
+        <script>
+            $("#btn").click(function(){ //버튼 클릭시
+                var tbl = $("#tbl"); // 테이블 요소 얻어오기
+
+                $(tbl).empty();  // 이전에 작성된tbl 자식 요소 모두 제거.
+                
+                //행, 열 값 얻어오기
+                var row = parseInt($("#row").val());
+                var col = parseInt($("#col").val());
+                // input 태그의 value값은 string 이므로 숫자 변환이 필요함
+
+                // 1행, 입력받은 열 만들기
+                var tr = "<tr>";
+                for(var c = 0; c<col; c++ ){
+                    var td = "<td></td>"
+                    tr += td;
+                }
+                tr += "</tr>";
+
+                $(tbl).append(tr);
+
+
+                var td = "<td>";
+                for(var r = 0; r<row; r++ ){
+                    var tr = "<tr></tr>"
+                    td += td;
+                }
+                td += "</td>";
+
+                $(tbl).append(td);
+            });
+
+
+            var tbl = $("#tbl"); //  테이블 요소 얻어오기 
+
+            var td1 = "<td>" + 1 + "</td>";
+            var td2 = "<td>" + 2 + "</td>";
+            var td3 = "<td>" + 3 + "</td>";
+            var tr = "<tr>" + td1 + td2 + td3 +  "</tr>";
+
+            // $(tbl).append(tr);
+            // $(tbl).append(tr);
+
+
+        </script>
+    </body>
+    
+</html>

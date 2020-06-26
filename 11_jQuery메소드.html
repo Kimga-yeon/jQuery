@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+        <title>11. jQuery 메소드</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <style>
+            .highlight-0 { background-color : red;}
+            .highlight-1 { background-color : orange;}
+            .highlight-2 { background-color : yellow;}
+            .highlight-3 { background-color : green;}
+            .highlight-4 { background-color : blue;}
+        </style>
+    </head>
+    <body>
+        <h1> each() 메소드 </h1>
+        <p>
+            Java에서 사용하는 향상된 for문(for each문)과 비슷한 메소드로<br>
+            객체나 배열의 요소를 반복 접근할 때 사용.
+        </p>
+        <!-- for in문은 객체의 속성을 반복 접근하기 위한 반복문 -->
+        <pre>
+            1. $.each(object, function(index,item){ })
+                - object : 배열 또는 객체
+                - index : 현재 접근중인 배열의 인덱스 또는 객체의 key값을 의미
+                - item : 현재 접근 중인 배열 요소의 값 또는 
+                [          객체 속성의 value값을 의미
+
+            2. $("선택자").each(function(index, item){})
+                - $("선택자")를 이용하여 여러 요소를 한번에 선택
+                    -> 배열의 형태로 반환됨
+                    -> 반환된 배열을 반복접근함.
+
+        </pre>
+
+        <div id="area1" ></div>
+        <script>
+            $(document).ready(function(){
+                // 객체 배열 생성 
+                var arr = [ { name : "네이버", link : "https://naver.com"},
+                              { name : "구글", link : "https://google.com"},
+                              { name : "w3schools", link : "https://w3schools.com"}  
+                 ];
+         
+
+            var output = "";
+
+            $.each(arr, function(index, item){
+                output += "<h2><a href='" + item.link + "'>" + item.name + "</a></h2>";
+                      // <h2><a href='https://naver.com'>네이버</a></h2>
+            });         
+
+            $("#area1").html(output);
+
+            });   
+        </script>
+        <hr>
+        <div id="wrap">
+            <h1>item-0</h1>
+            <h1>item-1</h1>
+            <h1>item-2</h1>
+            <h1>item-3</h1>
+            <h1>item-4</h1>
+        </div>
+        <script>
+            $(function(){
+                // $("#wrap > h1")
+                $("#wrap").children("h1").each(function(index,item){
+                    $(item).addClass("highlight-" + index);
+                });
+            });
+        </script>
+
+    </body>
+</html>

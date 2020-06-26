@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+        <title>01.jQuery 개요</title>
+        <!-- <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script> -->
+
+        <!-- CDN 방식 -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <h1>jQuery 개요</h1>
+
+        <h3>jQuery란?</h3>
+        <p>
+            기존 복잡했던 클라이언트 측 HTML 스크립팅을 <br>
+            간소화 하기 위해 고안된 Javascript 라이브러리로 <br>
+            적은양의 코드로 빠르고, 풍부한 기능을 제공함. <br><br>
+
+            library : 프로그램 개발 시 필요한 추가적인 기능 <br>
+
+        </p>
+
+        <h3> jQuery 연결 방법</h3>
+        <pre>
+            &lt;script type="text/javascript" src="jQuery.js파일 경로"&gt;&lt;/script&gt;
+
+            오프라인 / 온라인 상태에 따라 파일 경로가 달라질 수 있음.
+
+            -jQuery 공식 사이트 : http://jquery.com/
+            -jQuery 라이브러리 제공 페이지 : http://code.jquery.com/
+
+            1. jQuery 라이브러리를 다운로드 하여 연결하는 방법 
+                - js 파일을 직접 다운로드하여 파일 경로를 지정함.
+
+            2. CDN(Content Delivery Network) 을 이용한 연결 방법 
+                - 라이브러리를 제공하는 주소를 이용하여 파일 경로를 지정함.   
+
+        </pre>
+
+        <hr>
+        <h3>jQuery 시작하기</h3>
+        <pre>
+
+            * jQuery 기본 형태
+            
+                $ ('선택자').메소드명('속성','속성값 | '이벤트 핸들러');
+        </pre>
+        <button onclick="test1()">jQuery  전체 선택자 확인</button>
+        <script>
+            function test1(){
+
+                // "*" : 전체 선택자
+                $("*").css("color","red");
+          
+                // css() 메소드 : style과 관련된 기능 수행
+               }   
+        </script>
+
+        <hr>
+        <pre>
+            * jQuery의 ready() 함수
+            
+                - javascript의 window.onload를 의미하며 
+                페이지 내에서 한 번만 작성할 수 있던 window.onload의 단점을 극복함.
+                (여러번 작성 가능)
+
+                jQuery의 ready()함수 작성 방법
+
+                1) jQuery(document).ready(function(){ });
+                // 문서가 준비되었을때 함수를 실행해라 
+                
+                2) $(document).ready(function(){ });
+                    ($ == jQuery를 의미)
+
+                3) $(function(){ });
+                
+                
+                
+
+        </pre>
+    </body>
+</html>
